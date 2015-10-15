@@ -33,7 +33,22 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script src="cordova.js"></script>
         <title>Hello World</title>
+        <script>
+            document.addEventListener('deviceready', function() {
+                if (navigator.notification) { // Override default HTML alert with native dialog
+                    window.alert = function(message) {
+                        navigator.notification.alert(
+                                message, // message
+                                null, // callback
+                                "Workshop", // title
+                                'OK'        // buttonName
+                                );
+                    };
+                }
+            }, false);
+        </script>
     </head>
     <body>
         <div class="app">
